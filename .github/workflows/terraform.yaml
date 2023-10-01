@@ -1,21 +1,19 @@
-on: [push]
- 
+name: Terraform
 
+on: [push] 
+env:
+  AWS_ACCESS_KEY_ID: ${{secrets.ACTION_ACCESS_KEY}}
+  AWS_SECRETS_ACCESS_key: ${{secrets.ACTION_SECRET_ACCESS_key}} 	
 jobs: 
   terraform:
-    runs-on: windows-latest
-    env:
-       AWS_ACCESS_KEY_ID: ${{secrets.ACTION_ACCESS_KEY}}
-       AWS_SECRETS_ACCESS_key: ${{secrets.ACTION_SECRET_ACCESS_key}} 	
+    runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v3 
       - name: Setup terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.1.9 
-      - name: Terraform actions
-        run: |
       - name: terraform init
         run: terraform init
       - name: validate
