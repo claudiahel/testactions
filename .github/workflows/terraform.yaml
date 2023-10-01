@@ -1,9 +1,13 @@
 name: Terraform 
 
-on: [push]
+on: [push] 
+
 jobs: 
   terraform:
     runs-on: ubuntu-latest
+    env:
+       AWS_ACCESS_KEY_ID: ${{secrets.ACTION_ACCESS_KEY}}
+       AWS_SECRETS_ACCESS_key: ${{secrets.ACTION_SECRET_ACCESS_key}} 	
     steps:
       - name: checkout
         uses: actions/checkout@v3 
