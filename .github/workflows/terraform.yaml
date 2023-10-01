@@ -1,9 +1,7 @@
-name: Terraform 
+name: terraform
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
+ 
 
 jobs: 
   terraform:
